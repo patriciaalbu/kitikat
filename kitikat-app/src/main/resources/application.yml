@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: test
     password: test
-    url: jdbc:mysql://localhost:3306/test?createDatabaseIfNotExist=true
+    url: ${CLEARDB_DATABASE_URL:jdbc:mysql://localhost:3306/test?createDatabaseIfNotExist=true}
   jpa:
     hibernate:
       ddl-auto: update
