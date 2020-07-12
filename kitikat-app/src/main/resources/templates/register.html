@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>signup</title>
+</head>
+<body>
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6 login-form-2">
+            <h3>Sign up</h3>
+            <form action="/register" method="post">
+                <div th:if="${error != null}" class="alert alert-danger" role="alert">
+                    <span style="float: left;margin-top: 2px;margin-right: 5px;color:red;">
+                        <svg class="bi bi-x-octagon-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm.394 4.708a.5.5 0 0 0-.708-.708L8 7.293 4.854 4.146a.5.5 0 1 0-.708.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .708.708L8 8.707l3.146 3.147a.5.5 0 0 0 .708-.708L8.707 8l3.147-3.146z"></path>
+                        </svg>
+                    </span>
+                    <span th:text="${error}" style="color:red;"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" placeholder="Your Email *" th:value="${email}" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Your Name *" th:value="${name}" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Your Password *" th:value="${password}" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Sign up" />
+                </div>
+                <div class="form-group">
+                    <a href="login" class="login">Already registered? Go to Login</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile page</title>
+</head>
+<body>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="style-profile.css">
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                    <div class="card-title mb-4">
+                        <div class="d-flex justify-content-start">
+                            <div class="image-container">
+                                <img th:src="${user.imgSrc}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                <div class="middle">
+                                    <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
+                                    <input type="file" style="display: none;" id="profilePicture" name="file" />
+                                </div>
+                            </div>
+                            <div class="userData ml-3">
+                                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"><span th:text="${user.name}"></span></a></h2>
+                                <h6 class="d-block">Active</h6>
+                                <h6 class="d-block">"They call me Ciutz"</h6>
+                            </div>
+                            <div class="ml-auto">
+                                <p>sessionid = <span th:text="${sessionId}"></span></p>
+                                <a th:href="@{/logout?sessionId={sessionId}(sessionId=${sessionId})}">Logout</a>
+                                <a href="/edit-profile">Edit Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            Email
+        </div>
+        <div class="col-md-6">
+            <span th:text="${user.email}"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            Birthdare
+        </div>
+        <div class="col-md-6">
+            <span th:text="${user.birthdate}"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            Race
+        </div>
+        <div class="col-md-6">
+            <span th:text="${user.race}"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            Hobbies
+        </div>
+        <div class="col-md-6">
+            <span th:text="${user.hobbies}"></span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile page</title>
+</head>
+<body>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="style-profile.css">
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <form method="POST" action="/edit-profile" class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="tab-content ml-1" id="myTabContent">
+                                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label style="font-weight:bold;">Image Src</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" th:value="${imgSrc}" name="imgSrc">
+                                        </div>
+                                        <div class="col-md-2">
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label style="font-weight:bold;">Full Name</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" th:value="${fullname}" name="fullname">
+                                        </div>
+                                        <div class="col-md-2">
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label style="font-weight:bold;">Birth Date</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" th:value="${birthdate}" name="birthdate">
+                                        </div>
+                                        <div class="col-md-2">
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label style="font-weight:bold;">Email</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" th:value="${email}" name="email">
+                                        </div>
+                                        <div class="col-md-2">
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label style="font-weight:bold;">Race</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" th:value="${race}" name="race">
+                                        </div>
+                                        <div class="col-md-2">
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label style="font-weight:bold;">Hobbies</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                        <input type="text" th:value="${hobbies}" name="hobbies">
+                                        </div>
+                                        <div class="col-md-2">
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="col-md-8">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button id="save" class="btn btn-primary" type="submit">Save</button>
+                                            </div>
+                                        </div>
+                                    <hr />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
