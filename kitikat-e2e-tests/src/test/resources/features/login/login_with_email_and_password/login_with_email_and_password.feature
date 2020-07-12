@@ -10,5 +10,5 @@ Feature: Login with Email and password
 
     Examples:
       | email | password | login_url | status |
-      | ciutz@ciutz.com | '11' | 'http://localhost:8080/login' | '302' |
-      | ciutz@ciutz.com | '12' | 'http://localhost:8080/login' | '200' |
+      | ciutz@ciutz.com | '11' | 'https://kitikat.herokuapp.com/login' | '302' |
+      | ciutz@ciutz.com | '12' | 'https://kitikat.herokuapp.com/login' | '200' |

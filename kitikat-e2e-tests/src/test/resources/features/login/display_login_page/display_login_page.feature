@@ -11,5 +11,5 @@ Feature: Display Login page when not authenticated
 
     Examples:
       | login_url | status |
-      | 'http://localhost:8080/login' | '200' |
-      | 'http://localhost:8080/profile' | '200' |
+      | 'https://kitikat.herokuapp.com/login' | '200' |
+      | 'https://kitikat.herokuapp.com/profile' | '200' |
