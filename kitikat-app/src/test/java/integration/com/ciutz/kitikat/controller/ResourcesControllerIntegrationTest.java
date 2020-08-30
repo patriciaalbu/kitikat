@@ -46,4 +46,5 @@ public class ResourcesControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("<title>kitikat</title>")));
     }
+
 }

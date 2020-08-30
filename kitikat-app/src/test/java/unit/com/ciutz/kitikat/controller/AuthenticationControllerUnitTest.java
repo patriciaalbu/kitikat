@@ -15,9 +15,7 @@ import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AuthenticationControllerUnitTest {
@@ -148,4 +146,125 @@ public class AuthenticationControllerUnitTest {
 
         Assert.assertEquals("template is not as expected", "register", actual);
     }
+
+    @Test
+    public void profileTest() {
+        // given - predefined existing situation
+        Mockito
+                .when(sessionMock.getAttribute(Mockito.eq("sessionId")))
+                .thenReturn("dummy-session-id");
+
+        Mockito
+                .when(authenticationServiceMock.getUserByEmail(Mockito.anyObject()))
+                .thenReturn(dummyUser);
+
+        Mockito.
+                when(modelMock.addAttribute(Mockito.anyString(), Mockito.anyString()))
+                .thenReturn(modelMock);
+
+        // when
+        String actual = target.profile(modelMock, sessionMock);
+
+        // then
+        Assert.assertEquals("profile", actual);
+
+        // then - make sure no undesired side effects happened
+        Mockito.verify(sessionMock, Mockito.times(3)).getAttribute(Mockito.eq("sessionId"));
+        Mockito.verifyNoMoreInteractions(sessionMock);
+
+        Mockito.verify(authenticationServiceMock, Mockito.times(1)).getUserByEmail(Mockito.anyObject());
+        Mockito.verifyNoMoreInteractions(authenticationServiceMock);
+
+        Mockito.verify(modelMock, Mockito.times(1)).addAttribute(Mockito.eq("sessionId"), Mockito.eq("dummy-session-id"));
+        Mockito.verify(modelMock, Mockito.times(1)).addAttribute(Mockito.eq("user"), Mockito.eq(dummyUser));
+        Mockito.verifyNoMoreInteractions(modelMock);
+    }
+
+    @Test
+    public void profileNullUserTest() {
+        // given - predefined existing situation
+        Mockito
+                .when(sessionMock.getAttribute(Mockito.eq("sessionId")))
+                .thenReturn("dummy-session-id");
+
+        Mockito
+                .when(authenticationServiceMock.getUserByEmail(Mockito.anyObject()))
+                .thenReturn(null);
+
+        Mockito.
+                when(modelMock.addAttribute(Mockito.anyString(), Mockito.anyString()))
+                .thenReturn(modelMock);
+
+        // when
+        String actual = target.profile(modelMock, sessionMock);
+
+        // then
+        Assert.assertEquals("redirect:/login", actual);
+
+        // then - make sure no undesired side effects happened
+        Mockito.verify(sessionMock, Mockito.times(3)).getAttribute(Mockito.eq("sessionId"));
+        Mockito.verifyNoMoreInteractions(sessionMock);
+
+        Mockito.verify(authenticationServiceMock, Mockito.times(1)).getUserByEmail(Mockito.anyObject());
+        Mockito.verifyNoMoreInteractions(authenticationServiceMock);
+
+        Mockito.verify(modelMock, Mockito.times(1)).addAttribute(Mockito.eq("sessionId"), Mockito.eq("dummy-session-id"));
+        Mockito.verifyNoMoreInteractions(modelMock);
+    }
+
+    @Test
+    public void profileNullSessionTest() {
+        // given - predefined existing situation
+        Mockito
+                .when(sessionMock.getAttribute(Mockito.eq("sessionId")))
+                .thenReturn(null);
+
+        // when
+        String actual = target.profile(modelMock, sessionMock);
+
+        // then
+        Assert.assertEquals("redirect:/login", actual);
+
+        // then - make sure no undesired side effects happened
+        Mockito.verify(sessionMock, Mockito.times(1)).getAttribute(Mockito.eq("sessionId"));
+        Mockito.verifyNoMoreInteractions(sessionMock);
+    }
+
+    @Test
+    public void editProfileNullSessionTest() {
+        // given
+        Mockito
+                .when(sessionMock.getAttribute(Mockito.eq("sessionId")))
+                .thenReturn(null);
+
+        // when
+        String actual = target.editProfile(modelMock, sessionMock);
+
+        // then
+        Assert.assertEquals("redirect:/login", actual);
+    }
+
+    @Test
+    public void editProfileTest() {
+        // given
+        Mockito
+                .when(sessionMock.getAttribute(Mockito.eq("sessionId")))
+                .thenReturn("dummy-session-id");
+
+        Mockito
+                .when(authenticationServiceMock.getUserByEmail(Mockito.anyObject()))
+                .thenReturn(dummyUser);
+
+        Mockito.
+                when(modelMock.addAttribute(Mockito.anyString(), Mockito.anyString()))
+                .thenReturn(modelMock);
+
+        // when
+        String actual = target.editProfile(modelMock, sessionMock);
+
+        // then
+        Assert.assertEquals("edit-profile", actual);
+    }
+
+
 }

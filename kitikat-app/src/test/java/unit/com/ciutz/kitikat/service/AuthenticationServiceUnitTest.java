@@ -147,4 +147,22 @@ public class AuthenticationServiceUnitTest {
         Mockito.verify(userRepositoryMock, Mockito.times(1)).save(Mockito.any(User.class));
         Mockito.verifyNoMoreInteractions(userRepositoryMock);
     }
+
+    @Test
+    public void userExistsTest() {
+        // given - predefined existing situation
+        Mockito
+                .when(userRepositoryMock.findByEmail(Mockito.any(String.class)))
+                .thenReturn(Optional.of(dummyUser));
+
+        // when
+        boolean actual = target.userExists("a@a.com");
+
+        // then - assert the side effects
+        Assert.assertTrue("user should exist", actual);
+
+        // then - make sure no undesired side effects happened
+        Mockito.verify(userRepositoryMock, Mockito.times(1)).findByEmail(Mockito.any(String.class));
+        Mockito.verifyNoMoreInteractions(userRepositoryMock);
+    }
 }

@@ -7,24 +7,24 @@ docker run --name mysql-server -p:3306:3306 -e MYSQL_DATABASE=test -e MYSQL_ROOT
 If container is already created, start it with:
 
 ```shell script
-docker start mysql-serrver
+docker start mysql-server
 ```
 
 Investigate the db logs with (Ctrl+C to exit):
 
 ```shell script
-docker logs -f mysql-serrver
+docker logs -f mysql-server
 ```
 
 To stop the container, use:
 
 ```shell script
-docker stop mysql-serrver
+docker stop mysql-server
 ```
 
 To remove the container, stop it firt, then use:
 
 ```shell script
-docker rm mysql-serrver
+docker rm mysql-server
 ```
 
